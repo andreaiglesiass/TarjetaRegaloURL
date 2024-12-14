@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, #004a87, #002f5f);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #003a6e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .login-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0056a6;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-container button:hover {
+            background-color: #007bce;
+        }
+        .error-message {
+            color: #ff4d4d;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.querySelector('form');
+            const errorMessage = document.querySelector('.error-message');
+
+            loginForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const username = document.querySelector('#username').value;
+                const password = document.querySelector('#password').value;
+
+                if (username === 'admin' && password === '1234') {
+                    window.location.href = 'Lupuispis.html';
+                } else {
+                    errorMessage.textContent = 'Usuario o contraseña incorrectos. Inténtalo de nuevo.';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Iniciar Sesión</h1>
+        <form>
+            <input type="text" id="username" placeholder="Usuario" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="error-message"></div>
+    </div>
+</body>
+</html>
+
