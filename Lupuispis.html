@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Regalo PSN</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #004a87, #002f5f);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .card-container {
+            width: 450px;
+            height: 500px;
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg);
+            transition: transform 0.8s;
+        }
+
+        .card.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            backface-visibility: hidden;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #0056a6, #0083cf);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .card-front img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .card-back {
+            background: #002f5f;
+            transform: rotateY(180deg);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .card-back .header {
+            background-color: #001a33;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .card-back .header h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .card-back .header img {
+            width: 60px;
+            margin-top: 10px;
+        }
+
+        .card-back .content p {
+            margin: 10px 0;
+            font-size: 1em;
+        }
+
+        .card-back .code-box {
+            background-color: #ffffff;
+            color: #0056a6;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #cccccc;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('.card');
+            card.addEventListener('click', () => {
+                card.classList.toggle('is-flipped');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-face card-front">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/1280px-Playstation_logo_colour.svg.png" alt="Logo de PlayStation">
+                ¡Tenemos un regalo para ti!
+            </div>
+            <div class="card-face card-back">
+                <div class="header">
+                    <h1>Tarjeta de Regalo PSN</h1>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Playstation_logo_colour.svg/1280px-Playstation_logo_colour.svg.png" alt="Logo de PlayStation">
+                </div>
+                <div class="content">
+                    <p>¡Disfruta de tus juegos favoritos en PlayStation!</p>
+                    <p>Tarjeta de Regalo por valor de:</p>
+                    <div class="code-box">50,00 EUR</div>
+                    <p>Tu código es:</p>
+                    <div class="code-box">XXXX-YYYY-ZZZZ</div>
+                    <p>Canjéalo en la tienda de PlayStation para dejar de robarme la mia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Andrea Iglesias Network. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
