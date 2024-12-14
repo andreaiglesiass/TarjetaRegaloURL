@@ -63,11 +63,20 @@
                 const username = document.querySelector('#username').value;
                 const password = document.querySelector('#password').value;
 
-                if (username === 'admin' && password === '1234') {
-                    window.location.href = 'Lupuispis.html';
-                } else {
-                    errorMessage.textContent = 'Usuario o contraseña incorrectos. Inténtalo de nuevo.';
-                }
+                fetch('users.json')
+                    .then(response => response.json())
+                    .then(users => {
+                        const user = users.find(u => u.username === username && u.password === password);
+                        if (user) {
+                            window.location.href = 'Lupuispis.html';
+                        } else {
+                            errorMessage.textContent = 'Usuario o contraseña incorrectos. Inténtalo de nuevo.';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al cargar los datos de usuarios:', error);
+                        errorMessage.textContent = 'Error al verificar las credenciales. Inténtalo más tarde.';
+                    });
             });
         });
     </script>
@@ -84,4 +93,3 @@
     </div>
 </body>
 </html>
-
